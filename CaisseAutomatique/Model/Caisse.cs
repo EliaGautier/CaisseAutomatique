@@ -102,6 +102,16 @@ namespace CaisseAutomatique.Model
         }
 
         /// <summary>
+        /// Enregistre le dernier article scanné
+        /// </summary>
+        public void EnregistreArticle()
+        {
+            for (int i = 0; i<quantiteSaisie; i++)
+                Articles.Add(this.dernierArticleScanne);
+            quantiteSaisie = 1;
+        }
+
+        /// <summary>
         /// Pattern d'observable
         /// </summary>
         public event PropertyChangedEventHandler? PropertyChanged;
