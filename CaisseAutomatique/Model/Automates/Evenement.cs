@@ -8,5 +8,6 @@ namespace CaisseAutomatique.Model.Automates
 {
     internal enum Evenement
     {
+        SCAN
     }
 }

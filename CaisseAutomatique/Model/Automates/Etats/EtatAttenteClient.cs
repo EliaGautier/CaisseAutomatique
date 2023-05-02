@@ -12,16 +12,33 @@ namespace CaisseAutomatique.Model.Automates.Etats
         {
         }
 
-        public override string Message => "Bonjour, scannez votre premier article !";
+        public override string Message 
+        { 
+            get 
+            {
+                string ret = "Bonjour, scannez votre premier article !";
+                if (NouvelArticle != null) ret = NouvelArticle.Nom;
+                return ret;
+            } 
+        }
 
         public override void Action(Evenement e)
         {
-            throw new NotImplementedException();
+            if(e == Evenement.SCAN)
+            {
+                Metier.EnregistreArticle();
+                Metier.ScanArticle(NouvelArticle);
+            }
         }
 
         public override Etat Transition(Evenement e)
         {
-            return new EtatAttenteClient(Metier);
+            Etat ret = new EtatAttenteClient(Metier);
+            if (e == Evenement.SCAN)
+            {
+                ret = new EtatAttenteClient(Metier);
+            }
+            return ret;
         }
     }
 }

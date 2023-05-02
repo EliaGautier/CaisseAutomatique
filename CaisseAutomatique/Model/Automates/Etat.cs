@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CaisseAutomatique.Model.Articles;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,12 +11,16 @@ namespace CaisseAutomatique.Model.Automates
     {
         private Caisse metier;
 
+        private Article nouvelArticle;
+
         protected Caisse Metier { get => metier; }
 
         /// <summary>
         /// Message associé à l'état
         /// </summary>
         public abstract string Message { get; }
+
+        public Article NouvelArticle { get => nouvelArticle; set => nouvelArticle = value; }
 
         public Etat(Caisse metier)
         {

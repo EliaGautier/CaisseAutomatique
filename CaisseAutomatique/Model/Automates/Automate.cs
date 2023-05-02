@@ -1,4 +1,5 @@
-﻿using CaisseAutomatique.Model.Automates.Etats;
+﻿using CaisseAutomatique.Model.Articles;
+using CaisseAutomatique.Model.Automates.Etats;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,8 @@ namespace CaisseAutomatique.Model.Automates
         public event PropertyChangedEventHandler? PropertyChanged;
 
         public string Message => etatCourant.Message;
+
+        public Article NouvelArticle { get => etatCourant.NouvelArticle; set => etatCourant.NouvelArticle = value; }
 
         public Automate(Caisse metier)
         {

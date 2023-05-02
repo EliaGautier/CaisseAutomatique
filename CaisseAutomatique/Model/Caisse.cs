@@ -109,6 +109,7 @@ namespace CaisseAutomatique.Model
             for (int i = 0; i<quantiteSaisie; i++)
                 Articles.Add(this.dernierArticleScanne);
             quantiteSaisie = 1;
+            NotifyPropertyChanged("Articles");
         }
 
         /// <summary>

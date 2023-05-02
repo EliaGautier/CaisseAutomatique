@@ -136,6 +136,8 @@ namespace CaisseAutomatique.VueModel
         /// <param name="vueArticle">Vue de l'article scanné</param>
         public void PasseUnArticleDevantLeScannair(VueArticle vueArticle)
         {
+            automate.NouvelArticle = vueArticle.Article;
+            automate.Activer(Evenement.SCAN);
         }
 
         /// <summary>
