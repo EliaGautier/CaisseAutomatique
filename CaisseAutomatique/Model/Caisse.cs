@@ -120,5 +120,11 @@ namespace CaisseAutomatique.Model
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        public void Payer(double somme)
+        {
+            sommePayee += somme;
+            NotifyPropertyChanged("SommePayee");
+        }
     }
 }

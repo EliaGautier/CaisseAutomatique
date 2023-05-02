@@ -170,6 +170,7 @@ namespace CaisseAutomatique.VueModel
         /// </summary>
         public void Paye()
         {
+            automate.Activer(Evenement.PAYER);
         }
 
         /// <summary>

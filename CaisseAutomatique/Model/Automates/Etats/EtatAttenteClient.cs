@@ -24,19 +24,36 @@ namespace CaisseAutomatique.Model.Automates.Etats
 
         public override void Action(Evenement e)
         {
-            if(e == Evenement.SCAN)
+            switch (e)
             {
-                Metier.EnregistreArticle();
-                Metier.ScanArticle(NouvelArticle);
+                case Evenement.SCAN:
+                    Metier.EnregistreArticle();
+                    Metier.ScanArticle(NouvelArticle);
+                    break;
+                case Evenement.PAYER:
+                    Metier.EnregistreArticle();
+                    if (Metier.Articles.Count > 0)
+                        Metier.Payer(Metier.PrixTotal);
+                    break;
             }
         }
 
         public override Etat Transition(Evenement e)
         {
-            Etat ret = new EtatAttenteClient(Metier);
-            if (e == Evenement.SCAN)
+            Etat ret;
+            switch (e)
             {
-                ret = new EtatAttenteClient(Metier);
+                case Evenement.SCAN:
+                    ret = new EtatAttenteClient(Metier);
+                    break;
+                case Evenement.PAYER:
+                    if (Metier.Articles.Count > 0) 
+                        ret = new EtatFin(Metier);
+                    else ret = new EtatAttenteClient(Metier);
+                    break;
+                default:
+                    ret = new EtatAttenteClient(Metier);
+                    break;
             }
             return ret;
         }
