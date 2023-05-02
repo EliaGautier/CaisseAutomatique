@@ -147,5 +147,25 @@ namespace CaisseAutomatique.Model
             InitAttributes();
             this.NotifyPropertyChanged("Reset");
         }
+
+        /// <summary>
+        /// Ajoute un article dans la balance
+        /// </summary>
+        /// <param name="article">L'article ajouté</param>
+        public void PoseArticle(Article article)
+        {
+            poidsBalance += article.Poids;
+            NotifyPropertyChanged("PoidsBalance");
+        }
+
+        /// <summary>
+        /// Retire un article de la balance
+        /// </summary>
+        /// <param name="article">L'article retiré</param>
+        public void RetireArticle(Article article)
+        {
+            poidsBalance -= article.Poids;
+            NotifyPropertyChanged("PoidsBalance");
+        }
     }
 }

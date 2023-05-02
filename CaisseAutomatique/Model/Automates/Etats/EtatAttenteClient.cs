@@ -35,6 +35,12 @@ namespace CaisseAutomatique.Model.Automates.Etats
                     if (Metier.Articles.Count > 0)
                         Metier.Payer(Metier.Reste);
                     break;
+                case Evenement.AJOUTER_BALANCE:
+                    Metier.PoseArticle(NouvelArticle);
+                    break;
+                case Evenement.RETIRER_BALANCE:
+                    Metier.RetireArticle(NouvelArticle);
+                    break;
             }
         }
 

@@ -10,6 +10,8 @@ namespace CaisseAutomatique.Model.Automates
     {
         SCAN,
         PAYER,
-        RESET
+        RESET,
+        AJOUTER_BALANCE,
+        RETIRER_BALANCE
     }
 }
