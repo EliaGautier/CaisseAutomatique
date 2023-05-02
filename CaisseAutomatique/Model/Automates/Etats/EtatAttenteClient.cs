@@ -8,7 +8,7 @@ namespace CaisseAutomatique.Model.Automates.Etats
 {
     internal class EtatAttenteClient : Etat
     {
-        public EtatAttenteClient(Caisse metier) : base(metier)
+        public EtatAttenteClient(Caisse metier, Automate automate) : base(metier, automate)
         {
         }
 
@@ -44,18 +44,23 @@ namespace CaisseAutomatique.Model.Automates.Etats
             switch (e)
             {
                 case Evenement.SCAN:
-                    ret = new EtatAttenteClient(Metier);
+                    ret = CreateEtatAttenteClient();
                     break;
                 case Evenement.PAYER:
-                    if (Metier.Articles.Count > 0) 
-                        ret = new EtatFin(Metier);
-                    else ret = new EtatAttenteClient(Metier);
+                    if (Metier.Articles.Count > 0)
+                        ret = new EtatFin(Metier, Automate);
+                    else ret = CreateEtatAttenteClient();
                     break;
                 default:
-                    ret = new EtatAttenteClient(Metier);
+                    ret = CreateEtatAttenteClient();
                     break;
             }
             return ret;
+        }
+
+        private EtatAttenteClient CreateEtatAttenteClient()
+        {
+            return new EtatAttenteClient(Metier, Automate);
         }
     }
 }

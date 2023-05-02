@@ -78,6 +78,11 @@ namespace CaisseAutomatique.Model
         /// </summary>
         public Caisse()
         {
+            InitAttributes();
+        }
+
+        private void InitAttributes()
+        {
             this.articles = new List<Article>();
             this.dernierArticleScanne = null;
             this.poidsBalance = 0;
@@ -124,10 +129,23 @@ namespace CaisseAutomatique.Model
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        /// <summary>
+        /// Paye une somme à la caisse
+        /// </summary>
+        /// <param name="somme">Valeur payée</param>
         public void Payer(double somme)
         {
             sommePayee += somme;
             NotifyPropertyChanged("SommePayee");
+        }
+
+        /// <summary>
+        /// Réinitialise tous les attributs de la caisse
+        /// </summary>
+        public void Reset()
+        {
+            InitAttributes();
+            this.NotifyPropertyChanged("Reset");
         }
     }
 }

@@ -20,10 +20,23 @@ namespace CaisseAutomatique.Model.Automates
         /// </summary>
         public abstract string Message { get; }
 
+        /// <summary>
+        /// Dernier article scanné
+        /// </summary>
         public Article NouvelArticle { get => nouvelArticle; set => nouvelArticle = value; }
 
-        public Etat(Caisse metier)
+        private Automate automate;
+        protected Automate Automate
         {
+            get
+            {
+                return automate;
+            }
+        }
+
+        public Etat(Caisse metier, Automate automate)
+        {
+            this.automate = automate;
             this.metier = metier;
         }
 

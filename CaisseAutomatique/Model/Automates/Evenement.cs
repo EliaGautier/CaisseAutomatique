@@ -9,6 +9,7 @@ namespace CaisseAutomatique.Model.Automates
     internal enum Evenement
     {
         SCAN,
-        PAYER
+        PAYER,
+        RESET
     }
 }

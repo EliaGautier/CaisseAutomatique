@@ -24,7 +24,7 @@ namespace CaisseAutomatique.Model.Automates
         public Automate(Caisse metier)
         {
             this.metier = metier;
-            etatCourant = new EtatAttenteClient(metier);
+            etatCourant = new EtatAttenteClient(metier, this);
 
         }
 
