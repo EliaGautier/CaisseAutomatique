@@ -27,7 +27,6 @@ namespace CaisseAutomatique.Model.Automates.Etats
             switch (e)
             {
                 case Evenement.SCAN:
-                    Metier.EnregistreArticle();
                     Metier.ScanArticle(NouvelArticle);
                     break;
                 case Evenement.PAYER:
@@ -50,7 +49,8 @@ namespace CaisseAutomatique.Model.Automates.Etats
             switch (e)
             {
                 case Evenement.SCAN:
-                    ret = CreateEtatAttenteClient();
+                    ret = new EtatAttenteBalance(Metier, Automate);
+                    ret.NouvelArticle = this.NouvelArticle;
                     break;
                 case Evenement.PAYER:
                     if (Metier.Articles.Count > 0)

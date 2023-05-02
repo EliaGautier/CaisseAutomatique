@@ -25,6 +25,7 @@ namespace CaisseAutomatique.Model.Automates
         /// </summary>
         public Article NouvelArticle { get => nouvelArticle; set => nouvelArticle = value; }
 
+
         private Automate automate;
         protected Automate Automate
         {

@@ -25,7 +25,6 @@ namespace CaisseAutomatique.Model.Automates
         {
             this.metier = metier;
             etatCourant = new EtatAttenteClient(metier, this);
-
         }
 
         public void Activer(Evenement e)
