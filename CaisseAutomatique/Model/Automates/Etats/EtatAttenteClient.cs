@@ -33,7 +33,7 @@ namespace CaisseAutomatique.Model.Automates.Etats
                 case Evenement.PAYER:
                     Metier.EnregistreArticle();
                     if (Metier.Articles.Count > 0)
-                        Metier.Payer(Metier.PrixTotal);
+                        Metier.Payer(Metier.Reste);
                     break;
             }
         }

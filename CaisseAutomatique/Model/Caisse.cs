@@ -14,6 +14,8 @@ namespace CaisseAutomatique.Model
     /// </summary>
     public class Caisse : INotifyPropertyChanged
     {
+        public double Reste => PrixTotal - SommePayee;
+
         /// <summary>
         /// Liste des articles enregistrés
         /// </summary>
@@ -99,6 +101,7 @@ namespace CaisseAutomatique.Model
         public void ScanArticle(Article article)
         {
             this.dernierArticleScanne = article;
+            quantiteSaisie++;
         }
 
         /// <summary>
@@ -108,7 +111,7 @@ namespace CaisseAutomatique.Model
         {
             for (int i = 0; i<quantiteSaisie; i++)
                 Articles.Add(this.dernierArticleScanne);
-            quantiteSaisie = 1;
+            quantiteSaisie = 0;
             NotifyPropertyChanged("Articles");
         }
 

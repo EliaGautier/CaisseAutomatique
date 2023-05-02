@@ -31,7 +31,7 @@ namespace CaisseAutomatique.Model.Automates
         public void Activer(Evenement e)
         {
             etatCourant.Action(e);
-            etatCourant.Transition(e);
+            etatCourant = etatCourant.Transition(e);
             NotifyPropertyChanged("Message");
         }
 
